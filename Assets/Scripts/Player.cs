@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] float jumpforce =1;
 
-    bool inGround = false;
+    bool inGround = false, isCrouching = false;
 
     bool dead = false;
 
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         
     }
 
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
         {
             
             inGround = false;
-            animator.SetBool("jump", false);
+            animator.SetBool("jump", true);
             rb.AddForce(Vector2.up*jumpforce, ForceMode2D.Impulse);
         }
 
